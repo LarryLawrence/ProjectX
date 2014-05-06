@@ -1,22 +1,49 @@
 package com.larry.projectx;
 
-import java.util.Locale;
+/*
+ * Copyright 2012 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+
+import android.app.ActionBar.OnNavigationListener;
+import android.app.Activity;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
-import android.view.Gravity;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends ActionBarActivity implements ActionBar.TabListener {
 
@@ -93,6 +120,10 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         if (id == R.id.action_settings) {
             return true;
         }
+        else
+        	if (id == R.id.action_about) {
+                return true;
+            }
         return super.onOptionsItemSelected(item);
     }
 
@@ -153,6 +184,26 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
      * A placeholder fragment containing a simple view.
      */
     public static class PlaceholderFragment extends Fragment {
+    	
+    	private ListView datalist;
+//    	private String tag;
+//    	
+//        // 生成一个SpinnerAdapter
+//        @Override
+//		public void onAttach(Activity activity) {
+//			// TODO Auto-generated method stub
+//			super.onAttach(activity);
+//			tag = getTag();
+//		}
+//		SpinnerAdapter adapter = ArrayAdapter.createFromResource(getActivity(), R.array.horses, android.R.layout.simple_spinner_dropdown_item);
+//        // 得到ActionBar
+//        android.app.ActionBar actionBar = getActivity().getActionBar();
+//        // 将ActionBar的操作模型设置为NAVIGATION_MODE_LIST
+//        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
+//        // 为ActionBar设置下拉菜单和监听器
+//        actionBar.setListNavigationCallbacks(adapter, new DropDownListenser());
+        
+        
         /**
          * The fragment argument representing the section number for this
          * fragment.
@@ -180,8 +231,106 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
             textView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
+            
+            
+            int ArgumentNum = getArguments().getInt(ARG_SECTION_NUMBER);
+            if ((ArgumentNum == 1)||(ArgumentNum == 2))
+            {
+            	datalist = (ListView)rootView.findViewById(R.id.vlist);
+            	SimpleAdapter adapter = new SimpleAdapter(getActivity(),getData(),R.layout.vlist,
+    				new String[]{"title","info","img"},
+    				new int[]{R.id.title,R.id.info,R.id.img});
+            	datalist.setAdapter(adapter);
+            }
+            else if(ArgumentNum == 3)
+            {
+            	rootView = inflater.inflate(R.layout.fragment_mine, container, false);
+            	
+//            	datalist = (ListView)rootView.findViewById(R.id.vlist2);
+//            	SimpleAdapter adapter = new SimpleAdapter(getActivity(),getData2(),R.layout.vlist2,
+//    				new String[]{"title","img"},
+//    				new int[]{R.id.title,R.id.img});
+//            	datalist.setAdapter(adapter);
+
+            	
+            	
+            }
+//        	 Toast.makeText(getActivity(), "it's"+Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)), Toast.LENGTH_LONG).show();
+//            TextView textViewSpinner= new TextView(getActivity());
+//            textViewSpinner.setText(tag);
+            
+            
             return rootView;
+            
         }
+		public List<Map<String, Object>> getData() {
+			List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("title", "汗血宝马    ￥19.8");
+			map.put("info", "1597人已买");
+			map.put("img", R.drawable.hanxuebaoma);
+			list.add(map);
+
+			map = new HashMap<String, Object>();
+			map.put("title", "汗血宝马    ￥19.8");
+			map.put("info", "1597人已买");
+			map.put("img", R.drawable.hanxuebaoma);
+			list.add(map);
+
+			map = new HashMap<String, Object>();
+			map.put("title", "汗血宝马    ￥19.8");
+			map.put("info", "1597人已买");
+			map.put("img", R.drawable.hanxuebaoma);
+			list.add(map);
+			
+			return list;
+		}
+		
+//		public List<Map<String, Object>> getData2() {
+//			List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+//
+//			Map<String, Object> map = new HashMap<String, Object>();
+//			map.put("title", "汗血宝马    ￥19.8");
+//			map.put("img", R.drawable.hanxuebaoma);
+//			list.add(map);
+//
+//			map = new HashMap<String, Object>();
+//			map.put("title", "汗血宝马    ￥19.8");
+//			map.put("img", R.drawable.hanxuebaoma);
+//			list.add(map);
+//
+//			map = new HashMap<String, Object>();
+//			map.put("title", "汗血宝马    ￥19.8");
+//			map.put("img", R.drawable.hanxuebaoma);
+//			list.add(map);
+//			
+//			return list;
+//		}
+        
+
     }
+    
+    /**
+     * 实现 ActionBar.OnNavigationListener接口
+     */
+//    class DropDownListenser implements OnNavigationListener
+//    {
+//        // 得到和SpinnerAdapter里一致的字符数组
+//        String[] listNames = getResources().getStringArray(R.array.horses);
+//
+//        /* 当选择下拉菜单项的时候，将Activity中的内容置换为对应的Fragment */
+//        public boolean onNavigationItemSelected(int itemPosition, long itemId)
+//        {
+//            // 生成自定的Fragment
+//        	PlaceholderFragment phf = new PlaceholderFragment();
+//        	android.app.FragmentManager manager = getFragmentManager();
+//        	android.app.FragmentTransaction transaction = manager.beginTransaction();
+//            // 将Activity中的内容替换成对应选择的Fragment
+//            transaction.replace(R.id.action_bar, phf, listNames[itemPosition]);
+//            transaction.commit();
+//            return true;
+//        }
+//    }
 
 }

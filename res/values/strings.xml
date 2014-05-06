@@ -5,6 +5,14 @@
     <string name="title_section1">每日推荐</string>
     <string name="title_section2">分类</string>
     <string name="title_section3">我的</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">设置</string>
+    <string name="action_about">关于</string>
 
+    <string-array name="horses">
+        <item>赤兔</item>
+        <item>的卢</item>
+        <item>绝影</item>
+        <item>爪黄飞电</item>
+    </string-array>
+    
 </resources>
