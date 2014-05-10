@@ -237,6 +237,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
             if ((ArgumentNum == 1)||(ArgumentNum == 2))
             {
             	datalist = (ListView)rootView.findViewById(R.id.vlist);
+            	datalist.setDividerHeight(0);//Make Listview divider line invisible
             	SimpleAdapter adapter = new SimpleAdapter(getActivity(),getData(),R.layout.vlist,
     				new String[]{"title","info","img"},
     				new int[]{R.id.title,R.id.info,R.id.img});
