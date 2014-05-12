@@ -7,7 +7,8 @@
     <string name="title_section3">我的</string>
     <string name="action_settings">设置</string>
     <string name="action_about">关于</string>
-
+	<string name="search_title">搜索</string>
+	<string name="search_hint">想要搜索什么？</string>
     <string-array name="horses">
         <item>赤兔</item>
         <item>的卢</item>

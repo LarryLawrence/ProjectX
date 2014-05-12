@@ -34,6 +34,7 @@
             android:background="@drawable/login_btn"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
+            android:textColor="#4a4949"
             android:text="马上登录" />
     </LinearLayout>
 
@@ -43,6 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@drawable/to_be_paid_btn"
+        android:textColor="#4a4949"
         android:text="待付订单" />
 
     <Button
@@ -50,6 +52,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/already_paid_btn"
+        android:textColor="#4a4949"
         android:text="已付订单" />
 
     <Button
@@ -58,6 +61,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:background="@drawable/address_btn"
+        android:textColor="#4a4949"
         android:text="地址管理" />
 
     <Button
@@ -65,6 +69,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/telephone_btn"
+        android:textColor="#4a4949"
         android:text="手机号码" />
 
     <ListView
